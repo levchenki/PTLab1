@@ -88,7 +88,8 @@ class TestStudentController:
         }
         return data
 
-    def test_init_student_controller(self, input_valid_data_one_student: DataType):
+    def test_init_student_controller(self,
+                                     input_valid_data_one_student: DataType):
         controller = StudentsController(input_valid_data_one_student)
         assert input_valid_data_one_student == controller.data
 
@@ -98,20 +99,24 @@ class TestStudentController:
 
     def test_one_student(self, input_valid_data_one_student: DataType):
         expected = ['Иванов Петр Иванович']
-        students = StudentsController(input_valid_data_one_student).get_students_with_rating_equals_90()
+        controller = StudentsController(input_valid_data_one_student)
+        students = controller.get_students_with_rating_equals_90()
         assert students == expected
 
     def test_two_students(self, input_valid_data_two_students: DataType):
         expected = ['Петров Петр Петрович', 'Иванов Петр Иванович']
-        students = StudentsController(input_valid_data_two_students).get_students_with_rating_equals_90()
+        controller = StudentsController(input_valid_data_two_students)
+        students = controller.get_students_with_rating_equals_90()
         assert students == expected
 
     def test_no_students(self, input_invalid_data: DataType):
         expected = []
-        students = StudentsController(input_invalid_data).get_students_with_rating_equals_90()
+        controller = StudentsController(input_invalid_data)
+        students = controller.get_students_with_rating_equals_90()
         assert students == expected
 
     def test_no_students_print(self, input_invalid_data: DataType, capsys):
-        StudentsController(input_invalid_data).get_students_with_rating_equals_90()
+        controller = StudentsController(input_invalid_data)
+        controller.get_students_with_rating_equals_90()
         captured = capsys.readouterr()
         assert captured.out == 'No student with average rating equal to 90.\n'

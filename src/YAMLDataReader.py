@@ -14,6 +14,7 @@ class YAMLDataReader(DataReader):
 
             for student in parsed:
                 for student_name, subjects in student.items():
-                    subjects = [(subject_name, grade) for subject_name, grade in subjects.items()]
+                    subjects = [(subject_name, grade)
+                                for subject_name, grade in subjects.items()]
                     self.students[student_name] = subjects
             return self.students

@@ -12,8 +12,9 @@ class TestGetPathFromArguments:
     def noncorrect_arguments_string(self) -> list[str]:
         return ["/home/user/file.txt"]
 
-    def test_get_path_from_correct_arguments(self,
-                                             correct_arguments_string: tuple[list[str], str]) -> None:
+    def test_get_path_from_correct_arguments(
+            self,
+            correct_arguments_string: tuple[list[str], str]) -> None:
         path = get_path_from_arguments(correct_arguments_string[0])
         assert path == correct_arguments_string[1]
 

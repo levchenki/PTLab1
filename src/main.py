@@ -27,8 +27,10 @@ def main():
 
     print("Rating: ", student_ratings)
 
-    students_with_90_grades = StudentsController(students).get_students_with_rating_equals_90()
+    controller = StudentsController(students)
+    students_with_90_grades = controller.get_students_with_rating_equals_90()
     print("Students with rating equals 90: ", students_with_90_grades)
+
 
 if __name__ == "__main__":
     main()
